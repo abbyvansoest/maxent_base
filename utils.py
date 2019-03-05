@@ -33,12 +33,10 @@ parser.add_argument('--exp_name', type=str, default='ant_sac')
 
 parser.add_argument('--save_models', action='store_true',
                     help='collect a video of the final policy')
-parser.add_argument('--record', action='store_true',
-                    help='collect a video of the final policy')
 parser.add_argument('--render', action='store_true',
                     help='render the environment')
-parser.add_argument('--use_avg_reward_fn', action='store_true',
-                    help='use averaged p as reward_fn')
+parser.add_argument('--online', action='store_true',
+                    help='use online reward fn')
 
 parser.add_argument('--gaussian', action='store_true',
                     help='reduce dimension with random gaussian')

@@ -4,7 +4,12 @@
 
 # python collect_baseline.py --env="MountainCarContinuous-v0" --T=200 --train_steps=400 --episodes=300 --epochs=50 --exp_name=test
 
+# USES LOCAL FORK OF GYM
+import sys
 import os
+home_dir = os.getenv('HOME')
+sys.path = [home_dir+'/gym-fork'] + sys.path
+
 import time
 from datetime import datetime
 import logging
@@ -142,6 +147,7 @@ def collect_entropy_policies(env, epochs, T, MODEL_DIR):
         epoch = 'epoch_%02d/' % (i) 
         
         a = 10 # average over this many rounds
+        print("--- RANDOM ---")
         p_baseline = policy.execute_random(T,
             render=args.render, video_dir=video_dir+'/baseline/'+epoch)
        
@@ -155,6 +161,7 @@ def collect_entropy_policies(env, epochs, T, MODEL_DIR):
 
         # Execute the cumulative average policy thus far.
         # Estimate distribution and entropy.
+        print("--- MAXENT ---")
         average_p, round_avg_ent, initial_state = \
             curiosity.execute_average_policy(env, policies, T, 
                 initial_state=initial_state, 

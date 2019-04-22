@@ -1,5 +1,7 @@
 # maxent_base
 
+This repo uses a *forked* copy of OpenAI Gym available at: https://github.com/abbyvansoest/gym-fork
+
 Commands to recreate MountainCar experiments:
 python collect_baseline.py --env="MountainCarContinuous-v0" --T=200 --train_steps=400 --episodes=300 --epochs=30 --exp_name=mountaincar_test
 
